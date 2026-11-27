@@ -18,7 +18,6 @@ public class EmployeeView {
         System.out.println("4. Update Employee");
         System.out.println("5. Archive Employee");
         System.out.println("0. Back to Main Menu");
-        System.out.print("Enter your choice: ");
     }
 
     public int getMenuChoice() {
@@ -46,14 +45,10 @@ public class EmployeeView {
             middleName = null;
         }
         String lastName = getRequiredInput("Last Name: ");
-
         LocalDate birthday = getValidBirthday();
-
-        String contactNumber = getRequiredInput("Contact Number: ");
+        String contactNumber = getValidContactNumber();
         String email = getValidEmail();
-
         LocalDate hireDate = getValidHireDate(birthday);
-
         int departmentId = getPositiveNumber("Department ID: ");
         int positionId = getPositiveNumber("Position ID: ");
         String address = getRequiredInput("Address: ");
@@ -119,7 +114,7 @@ public class EmployeeView {
         LocalDate birthday;
 
         while (true) {
-            System.out.println("Birthday (YYYY-MM-DD): ");
+            System.out.print("Birthday (YYYY-MM-DD): ");
 
             try {
                 birthday = LocalDate.parse(scanner.nextLine());
@@ -156,6 +151,23 @@ public class EmployeeView {
 
             } catch (DateTimeException e) {
                 System.out.println("Invalid date. Please use YYYY-MM-DD.");
+            }
+        }
+    }
+
+    private String getValidContactNumber() {
+        String contactNumber;
+
+        while (true) {
+            System.out.print("Contact Number (09XXXXXXXXX): ");
+            contactNumber = scanner.nextLine().trim();
+
+            if (contactNumber.isEmpty()) {
+                System.out.println("Contact number cannot be empty.");
+            } else if (!contactNumber.matches("^09\\d{9}$")) {
+                System.out.println("Invalid contact number. Please enter an 11-digit number starting with 09.");
+            } else {
+                return contactNumber;
             }
         }
     }
