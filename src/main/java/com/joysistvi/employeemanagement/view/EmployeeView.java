@@ -18,7 +18,7 @@ public class EmployeeView {
         System.out.println("3. Search Employee");
         System.out.println("4. Update Employee");
         System.out.println("5. Archive Employee");
-        System.out.println("0. Back to Main Menu");
+        System.out.println("0. Back");
     }
 
     public int getMenuChoice() {
@@ -258,16 +258,29 @@ public class EmployeeView {
 
     public void displayAllEmployees(List<Employee> employees) {
 
-        System.out.println("\n===== EMPLOYEE LIST =====");
+        System.out.println("\n------------------------------------------------------------------------------------------");
+        System.out.printf("%52s%n", "EMPLOYEE LIST");
+        System.out.println("------------------------------------------------------------------------------------------");
 
         if (employees == null || employees.isEmpty()) {
             System.out.println("No employees found.");
             return;
         }
 
+        System.out.println("------------------------------------------------------------------------------------------");
+        System.out.printf("%-5s | %-15s | %-15s | %-25s | %-15s%n",
+                "ID", "First Name", "Last Name", "Email", "Status");
+        System.out.println("------------------------------------------------------------------------------------------");
+
         for (Employee employee : employees) {
-            displayEmployeeDetails(employee);
-            System.out.println("----------------------------");
+            System.out.printf("%-5d | %-15s | %-15s | %-25s | %-15s%n",
+                    employee.getId(),
+                    employee.getFirstName(),
+                    employee.getLastName(),
+                    employee.getEmail(),
+                    employee.getEmploymentStatus());
         }
+
+        System.out.println("------------------------------------------------------------------------------------------");
     }
 }

@@ -13,9 +13,10 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
     }
 
     @Override
-    public boolean updateTimeOut(int employeeId, int attendanceDate, Attendance timeOut) {
+    public boolean updateTimeOut(int employeeId, int attendanceDate, int timeOut) {
         for (int i = 0; i < attendanceList.size(); i++) {
             Attendance a = attendanceList.get(i);
+
             if (a.getEmployeeId() == employeeId && a.getAttendanceDate() == attendanceDate) {
                 a.setTimeOut(timeOut);
                 return true;

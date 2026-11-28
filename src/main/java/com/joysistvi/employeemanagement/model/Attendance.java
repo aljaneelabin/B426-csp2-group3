@@ -8,9 +8,6 @@ public class Attendance {
     private int timeOut;
     private String status;
 
-    public Attendance() {
-    }
-
     public Attendance(int attendanceId, int employeeId, int attendanceDate, int timeIn, int timeOut, String status) {
         this.attendanceId = attendanceId;
         this.employeeId = employeeId;

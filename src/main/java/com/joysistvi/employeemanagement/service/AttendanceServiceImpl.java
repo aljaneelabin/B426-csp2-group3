@@ -59,7 +59,7 @@ public class AttendanceServiceImpl implements AttendanceService {
         }
 
         record.setTimeOut(timeOut);
-        boolean updated = attendanceRepository.updateTimeOut(employeeId, attendanceDate, record);
+        boolean updated = attendanceRepository.updateTimeOut(employeeId, attendanceDate, timeOut);
         return updated
                 ? "Time-out recorded at " + timeOut + "."
                 : "Failed to record time-out.";
