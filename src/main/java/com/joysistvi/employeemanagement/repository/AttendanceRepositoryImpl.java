@@ -13,6 +13,14 @@ public class AttendanceRepositoryImpl implements AttendanceRepository {
     }
 
     @Override
+<<<<<<< HEAD
+=======
+    public boolean updateTimeOut(int employeeId, int attendanceDate, Attendance timeOut) {
+        return false;
+    }
+
+    @Override
+>>>>>>> 276ccd2 (Updated leave and attendance model, attendance repo, attendance and leave services and attendance and leave view.)
     public boolean updateTimeOut(int employeeId, int attendanceDate, int timeOut) {
         for (int i = 0; i < attendanceList.size(); i++) {
             Attendance a = attendanceList.get(i);
