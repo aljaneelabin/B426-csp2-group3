@@ -6,7 +6,7 @@ public class User {
     private String username;
     private String password;
     private String role;
-    private Integer employeeId;
+    private int employeeId;
     private boolean archived;
 
     public User() {
