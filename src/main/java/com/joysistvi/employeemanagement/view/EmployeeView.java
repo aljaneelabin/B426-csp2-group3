@@ -4,6 +4,7 @@ import com.joysistvi.employeemanagement.model.Employee;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeView {
@@ -35,7 +36,6 @@ public class EmployeeView {
 
     public Employee getEmployeeInput() {
 
-
         System.out.println("\n===== ADD NEW EMPLOYEE =====");
 
         String firstName = getRequiredInput("First Name: ");
@@ -57,6 +57,65 @@ public class EmployeeView {
         return new Employee(0, firstName, middleName, lastName, birthday, contactNumber, email, hireDate, departmentId, positionId, address, employmentStatus, 0, false);
     }
 
+    public Employee getEmployeeUpdateInput(Employee employee) {
+
+        System.out.println("\n===== UPDATE EMPLOYEE =====");
+
+        String firstName = getRequiredInput("First Name: ");
+
+        System.out.print("Middle Name (optional): ");
+        String middleName = scanner.nextLine().trim();
+
+        if (middleName.isEmpty()) {
+            middleName = null;
+        }
+
+        String lastName = getRequiredInput("Last Name: ");
+        LocalDate birthday = getValidBirthday();
+        String contactNumber = getValidContactNumber();
+        String email = getValidEmail();
+        LocalDate hireDate = getValidHireDate(birthday);
+
+        int departmentId = getPositiveNumber("Department ID: ");
+        int positionId = getPositiveNumber("Position ID: ");
+
+        String address = getRequiredInput("Address: ");
+        String employmentStatus = getRequiredInput("Employment Status: ");
+
+        employee.setFirstName(firstName);
+        employee.setMiddleName(middleName);
+        employee.setLastName(lastName);
+        employee.setBirthday(birthday);
+        employee.setContactNumber(contactNumber);
+        employee.setEmail(email);
+        employee.setHireDate(hireDate);
+        employee.setDepartmentId(departmentId);
+        employee.setPositionId(positionId);
+        employee.setAddress(address);
+        employee.setEmploymentStatus(employmentStatus);
+
+        return employee;
+    }
+
+    public boolean getArchiveConfirmation() {
+
+        System.out.println("\n===== ARCHIVE EMPLOYEE =====");
+        System.out.print("Are you sure you want to archive this employee? (Y/N): ");
+
+        String answer = scanner.nextLine().trim();
+
+        return answer.equalsIgnoreCase("Y");
+    }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
+
+    public int getSearchEmployeeId() {
+        System.out.println("\n===== SEARCH EMPLOYEE =====");
+        return getPositiveNumber("Enter Employee ID to search: ");
+    }
+
     public void displayEmployeeDetails(Employee employee){
         System.out.println("Employee ID: " + employee.getId());
         System.out.println("First Name: " + employee.getFirstName());
@@ -72,6 +131,10 @@ public class EmployeeView {
         System.out.println("Employment Status: " + employee.getEmploymentStatus());
         System.out.println("Leave Credits: " + employee.getLeaveCredits());
         System.out.println("Archived: " + employee.isArchived());
+    }
+
+    public int getEmployeeIdInput() {
+        return getPositiveNumber("Enter Employee ID: ");
     }
 
     private String getRequiredInput(String message) {
@@ -164,7 +227,7 @@ public class EmployeeView {
 
             if (contactNumber.isEmpty()) {
                 System.out.println("Contact number cannot be empty.");
-            } else if (!contactNumber.matches("^09\\d{9}$")) {
+            }  else if (!contactNumber.matches("^09\\d{9}$")) {
                 System.out.println("Invalid contact number. Please enter an 11-digit number starting with 09.");
             } else {
                 return contactNumber;
@@ -190,6 +253,21 @@ public class EmployeeView {
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
+        }
+    }
+
+    public void displayAllEmployees(List<Employee> employees) {
+
+        System.out.println("\n===== EMPLOYEE LIST =====");
+
+        if (employees == null || employees.isEmpty()) {
+            System.out.println("No employees found.");
+            return;
+        }
+
+        for (Employee employee : employees) {
+            displayEmployeeDetails(employee);
+            System.out.println("----------------------------");
         }
     }
 }
