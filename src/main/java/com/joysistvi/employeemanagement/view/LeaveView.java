@@ -81,7 +81,7 @@ public class LeaveView {
         System.out.println("\nID | EmpID | Type     | Start      | End        | Status  | Reason");
         for (Leave l : leaves) {
             System.out.printf("%d  | %d     | %-8s | %s | %s | %-7s | %s%n",
-                    l.getLeaveId(),
+                    l.getLeaveType(),
                     l.getEmployeeId(),
                     l.getLeaveType(),
                     l.getStartDate(),
