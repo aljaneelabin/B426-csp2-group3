@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class Employee {
 
-    // 1. Fields
     private int employeeId;
     private String firstName;
     private String middleName;
@@ -22,7 +21,6 @@ public class Employee {
     private int leaveCredits;
     private boolean archived;
 
-    // 2. Constructor
     public Employee(int employeeId, String firstName, String middleName, String lastName, LocalDate birthday, String contactNumber, String email, LocalDate hireDate, int departmentId, int positionId, String address, String employmentStatus, int leaveCredits, boolean archived) {
         this.employeeId = employeeId;
         this.firstName = firstName;
@@ -39,7 +37,6 @@ public class Employee {
         this.leaveCredits = leaveCredits;
         this.archived = archived;
     }
-
 
     public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;

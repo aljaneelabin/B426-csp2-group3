@@ -12,7 +12,7 @@ public class User {
     public User() {
     }
 
-    public User(int userId, String username, String password, String role, Integer employeeId, boolean archived) {
+    public User(int userId, String username, String password, String role, int employeeId, boolean archived) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -53,11 +53,11 @@ public class User {
         this.role = role;
     }
 
-    public Integer getEmployeeId() {
+    public int getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(Integer employeeId) {
+    public void setEmployeeId(int employeeId) {
         this.employeeId = employeeId;
     }
 
