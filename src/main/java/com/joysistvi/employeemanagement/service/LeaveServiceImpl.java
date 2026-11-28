@@ -40,7 +40,7 @@ public class LeaveServiceImpl implements LeaveService {
                 reason.trim()
         );
         tempLeaveStore.add(leave);
-        return "Leave request submitted (ID: " + leave.getLeaveId() + ", Status: PENDING).";
+        return "Leave request submitted (ID: " + leave.getLeaveType() + ", Status: PENDING).";
     }
 
     @Override
